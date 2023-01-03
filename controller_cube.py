@@ -2,32 +2,24 @@ import model_cube
 import usual_view_cube as v
 
 ochki = 100
+
 def controllerLoop():
+    global ochki
     user_vib = (v.getchois()).lower()
-    if user_vib == "y":
-        n = model_cube.start()
-        if n == 6:
-            v.viewMassage(n)
-            model_cube.Win()
-            v.viewMassage(ochki)
-        elif n != 6:
-            v.viewMassage(n)
-            model_cube.Lose()
-            v.viewMassage(ochki)
-    elif user_vib == "n":
-        v.viewMassage(model_cube.End_Game())
-    elif ochki<=0:
-        v.viewMassage(model_cube.End_Game())
-    elif user_vib != "n" or "y":
-        v.viewMassage("Введите Y или N")
+    num = model_cube.start()
+    v.viewMassage(f"Число на кубике: {num}")
+    och = model_cube.ochki(ochki, num)
+    ochki = och
+    v.viewMassage(f"Ваши очки: {och}")
+    message, result = model_cube.check(och)
+    v.viewMassage(message)
+    return user_vib
         
 
 def main():
-    v.viewMassage("Хотите сиграть?")
+    v.viewMassage("Хотите сиграть?")  
     result = False
-    f = v.getLoop()
-    while not result:
-        controllerLoop()
+    v.getLoop()()
 
 if __name__ == '__main__':
     main()
