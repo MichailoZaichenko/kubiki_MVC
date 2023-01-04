@@ -1,10 +1,11 @@
 import model_cube
-import usual_view_cube as v
+import tkinker_view_cube as v
 
 ochki = 100
-
+number = 0
 def controllerLoop():
     global ochki
+    global number
     user_vib = (v.getchois()).lower()
     num = model_cube.start()
     v.viewMassage(f"Число на кубике: {num}")
@@ -13,7 +14,10 @@ def controllerLoop():
     v.viewMassage(f"Ваши очки: {och}")
     message, result = model_cube.check(och)
     v.viewMassage(message)
+    number = num
     return user_vib
+
+
         
 
 def main():
