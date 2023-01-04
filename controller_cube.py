@@ -1,4 +1,5 @@
 import model_cube
+# TODO tkinker_view_cube to usual_view_cube, if you want a console vesion of program
 import tkinker_view_cube as v
 
 ochki = 100
